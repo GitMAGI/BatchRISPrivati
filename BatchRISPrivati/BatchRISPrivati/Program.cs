@@ -36,7 +36,7 @@ namespace BatchRISPrivati
                 log.Error(string.Format("Esecuzione Job1: Errore durante l'esecuzione. Errore:{0}", e.Message));
             }
 
-
+            
             log.Info("Esecuzione Job2: Allineamento Anagrafica GR [PAZI] e Mapping delle identità ");
             // Esecuzione Job 2
             query = "[GR].[dbo].[RISPrivatiRichieste_Job2]";
