@@ -34,6 +34,11 @@ namespace BatchRISPrivati
             catch (Exception e)
             {
                 log.Error(string.Format("Esecuzione Job1: Errore durante l'esecuzione. Errore:{0}", e.Message));
+                log.Info(string.Format("Esecuzione Job1: Errore durante l'esecuzione."));
+
+                tw.Stop();
+                log.Info(string.Format("Completed! Elapsed time {0}", LibString.TimeSpanToTimeHmsms(tw.Elapsed)));
+                return;
             }
 
             
@@ -48,6 +53,11 @@ namespace BatchRISPrivati
             catch (Exception e)
             {
                 log.Error(string.Format("Esecuzione Job2: Errore durante l'esecuzione. Errore:{0}", e.Message));
+                log.Info(string.Format("Esecuzione Job2: Errore durante l'esecuzione."));
+
+                tw.Stop();
+                log.Info(string.Format("Completed! Elapsed time {0}", LibString.TimeSpanToTimeHmsms(tw.Elapsed)));
+                return;
             }
 
 
@@ -79,7 +89,7 @@ namespace BatchRISPrivati
                         {"episdafi", DateTime.Now},
                         {"epistipo", 9},
                         {"epischiu", 1},
-                        {"@episrepa", 2}
+                        {"episrepa", 2}
                     };
                     log.Info(string.Format("Esecuzione inserimento: Avvio ..."));
                     DataTable insertJob = DataAccessLayer.DBSQL.ExecuteQueryWithParams(connStr, insertquery, atts);
@@ -111,8 +121,12 @@ namespace BatchRISPrivati
             catch (Exception e)
             {
                 log.Error(string.Format("Esecuzione Job2.1: Errore durante l'esecuzione. Errore: {0}", e.Message));
-            }
+                log.Info(string.Format("Esecuzione Job2.1: Errore durante l'esecuzione."));
 
+                tw.Stop();
+                log.Info(string.Format("Completed! Elapsed time {0}", LibString.TimeSpanToTimeHmsms(tw.Elapsed)));
+                return;
+            }
 
 
             log.Info("Esecuzione Job3: Setting stato a 2");
@@ -126,6 +140,11 @@ namespace BatchRISPrivati
             catch (Exception e)
             {
                 log.Error(string.Format("Esecuzione Job3: Errore durante l'esecuzione. Errore: {0}", e.Message));
+                log.Info(string.Format("Esecuzione Job3: Errore durante l'esecuzione."));
+
+                tw.Stop();
+                log.Info(string.Format("Completed! Elapsed time {0}", LibString.TimeSpanToTimeHmsms(tw.Elapsed)));
+                return;
             }
 
 
